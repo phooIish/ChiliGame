@@ -1,11 +1,10 @@
 import java.util.Scanner;
 /*
-Algorithm: Compliment the other players pick to equal 4 or keep the amount of chocolates in the jar divisible by 4.
+Algorithm: Compliment the other player's pick to equal four, or keep the amount of chocolates in the jar divisible by four.
 */
 
 
 public class ChiliGame {
-
     public static void main(String[] args) {
         System.out.println("13 chocolates, 1 chilli pepper");
         // 1 | 4 | 4 | 4 | x
@@ -14,33 +13,31 @@ public class ChiliGame {
         Scanner pick = new Scanner(System.in);
         System.out.println("Do you want to go first? true or false");
         firstPick = pick.nextBoolean();
-
-        //Settle who picks first
-        if(firstPick){ //If p1 goes first, cpu will always take 3 for its first pick.
+   
+        if(firstPick){ //If p1 goes first, cpu will always take three.
             p1 = 1;
             cpu = 3;
             jar -= p1 + cpu;
-            System.out.println("p1 = "+p1);
-            System.out.println("cpu = "+cpu);
+            System.out.println("p1 = "+ p1);
+            System.out.println("cpu = "+ cpu);
             System.out.println(jar + " chocolate(s) remaining.");
-            //This will set the jar to seven after the second turn allowing the cpu to continue the algorithm regardless of p1's next move.
-            //Initially, p1 would always win with first pick and by only taking one chocolate every turn.
+            
             System.out.println("How many chocolates do you want to take? (1, 2, or 3 ONLY)");
             p1 = pick.nextInt();
             while(p1 < 1 || p1 > 3){ //Checks if p1 made a valid move***
                 p1 = pick.nextInt();
             }
-//          If p1 takes 1 for their second turn, cpu should take 1. This will set the jar to 7 allowing the cpu
-//          to continue the algorithm regardless of p1's next turn.
+//          If p1 takes one for their second turn, cpu should also take one. This will set the jar to seven allowing the cpu
+//          to continue the algorithm regardless of p1's next move.
             if(p1 == 1){
                 cpu = 1;
                 jar -= p1 + cpu;
-                System.out.println("p1 = "+p1);
-                System.out.println("cpu = "+cpu);
+                System.out.println("p1 = "+ p1);
+                System.out.println("cpu = "+ cpu);
                 System.out.println(jar + " chocolate(s) remaining.");
             }
             else{
-                System.out.println("p1 = "+p1);
+                System.out.println("p1 = "+ p1);
                 if(p1 < 3){
                     cpu = 3;
                     jar -= p1 + cpu;
@@ -49,7 +46,7 @@ public class ChiliGame {
                     cpu = 2;
                     jar -= p1 + cpu;
                 }
-                System.out.println("cpu = "+cpu);
+                System.out.println("cpu = "+ cpu);
                 System.out.println(jar + " chocolate(s) remaining.");
             }
         }
@@ -57,15 +54,16 @@ public class ChiliGame {
         else{
             jar--;
             System.out.println("cpu = 1");
+            
             System.out.println("How many chocolates do you want to take? (1, 2, or 3 ONLY)");
             p1 = pick.nextInt();
             while(p1 < 1 || p1 > 3){ //Checks if p1 made a valid move***
                 p1 = pick.nextInt();
             }
-            System.out.println("p1 = "+p1);
+            System.out.println("p1 = "+ p1);
             cpu = 4 - p1;
             jar -= (p1 + cpu);
-            System.out.println("cpu = "+cpu);
+            System.out.println("cpu = "+ cpu);
             System.out.println(jar + " chocolate(s) remaining.");
         }
 
@@ -81,14 +79,14 @@ public class ChiliGame {
 
             System.out.println("How many chocolates do you want to take? (1, 2, or 3 ONLY)");
             p1 = pick.nextInt();
-            //Checks if p1 made a valid move***
-            while(p1 < 1 || p1 > 3){
+            while(p1 < 1 || p1 > 3){ //Checks if p1 made a valid move***
                 p1 = pick.nextInt();
             }
             System.out.println("p1 = " + p1);
             jar -= p1;
 
-            //Jar check after user
+            
+            //Jar check after p1's turn
             if(jar == 0){
                 System.out.println("You took the last chocolate! You win!");
                 break;
@@ -116,7 +114,8 @@ public class ChiliGame {
                 System.out.println("cpu = "+ cpu);
             }
 
-            //Jar check after cpu
+            
+            //Jar check after cpu's turn
             if(jar == 0){ //No more leftover so loop breaks, p1 loses.
                 System.out.println("There are no more chocolates ;(\nYou lose!");
                 break;
